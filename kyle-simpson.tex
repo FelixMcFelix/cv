@@ -1,0 +1,160 @@
+\documentclass[11pt, a4paper]{moderncv}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{nth}
+
+\usepackage[sfdefault, osf]{AlegreyaSans}
+%\renewcommand*\oldstylenums[1]{{\AlegreyaSansOsF #1}}
+
+\usepackage[inline]{enumitem}
+\newlist{inlineItemize}{itemize*}{1}
+\setlist[inlineItemize]{label={}, itemjoin={{,}}, itemjoin*={{, and}}, before={\hspace{-.5ex}}, after={.}}
+\setlist[itemize]{topsep=0pt, partopsep=0pt, parsep=0pt, itemsep=.5em}
+
+\urlstyle{same}
+
+\usepackage{environ}
+\NewEnviron{cvitemize}[1][ ]{%
+	\cvline{#1}{\vspace{-1em}
+		\begin{itemize}
+			\BODY
+		\end{itemize}
+		\vspace{-1em}
+	}
+}
+
+\usepackage[sortcites
+,style=numeric-verb
+%,style=apa
+%,style=authoryear
+%,style=ext-authoryear-comp
+%,style=ext-alphabetic
+,maxcitenames=2
+,maxbibnames=99
+,defernumbers
+,backend=biber
+,sorting=none
+]{biblatex}
+\bibliography{bibliography.bib}
+
+\makeatletter
+\renewcommand*{\cventry}[7][.25em]{%
+	\cvitem[#1]{#2}{%
+		{\strong{#3}}%
+		\ifthenelse{\equal{#4}{}}{}{, {\slshape#4}}%
+		\ifthenelse{\equal{#5}{}}{}{, #5}%
+		\ifthenelse{\equal{#6}{}}{}{, #6}%
+		.\strut%
+		\ifx&#7&%
+		\else{\newline{}\begin{minipage}[t]{\linewidth}\small#7\end{minipage}}\fi}}
+\makeatother
+
+\usepackage[utf8]{inputenc}
+% adjust the page margins
+%\usepackage[scale=0.8]{geometry}
+\AtBeginDocument{\recomputelengths}
+
+\usepackage{lastpage}
+\rfoot{\addressfont\itshape\textcolor{color2}{Page \thepage\ of \pageref{LastPage}}}
+\cfoot{\addressfont\itshape\textcolor{color2}{Last updated on \today}}
+
+\moderncvstyle{classic}
+
+%\definecolor{color0}{RGB}{214,95,16}
+\definecolor{color1}{RGB}{214,95,16}
+%\definecolor{color2}{RGB}{214,126,16}
+
+\newcommand{\strong}[1]{\textcolor{color1}{\textbf{#1}}}
+\newcommand{\highlight}[1]{\textcolor{color1}{#1}}
+
+\title{Curriculum Vit\ae{}}
+\firstname{\color{color1} Kyle}
+\familyname{Simpson}
+\address{Sir Alwyn Williams Building}{Glasgow G12 8QN}{Scotland, United Kingdom}
+\email{k.simpson.1@research.gla.ac.uk}
+\homepage{mcfelix.me}
+\social[github]{felixmcfelix}
+
+\defbibenvironment{bibliography}
+{\list%
+	{\printfield{year}\hspace{1em}\printtext[labelnumberwidth]{\printfield{labelprefix}\printfield{labelnumber}}}
+	{\setlength{\topsep}{0pt}% layout parameters from moderncvstyleclassic.sty
+		\setlength{\labelwidth}{\hintscolumnwidth}%
+		\setlength{\labelsep}{\separatorcolumnwidth}%
+		\leftmargin\labelwidth%
+		\advance\leftmargin\labelsep%
+	}%
+	\sloppy\clubpenalty4000\widowpenalty4000}
+{\endlist}
+{\item}
+
+
+\DeclareNameAlias{default}{given-family}
+
+\usepackage{xstring}
+\usepackage{xpatch}
+\newbibmacro*{name:bold}[2]{%
+	\def\do##1{\iffieldequalstr{hash}{##1}{\color{color1}\bfseries\listbreak}{}}%
+	\dolistloop{\boldnames}%
+}
+
+\newcommand*{\boldnames}{}
+
+\xpretobibmacro{name:family}{\begingroup\usebibmacro{name:bold}{#1}{#2}}{}{}
+\xpretobibmacro{name:given-family}{\begingroup\usebibmacro{name:bold}{#1}{#2}}{}{}
+\xpretobibmacro{name:family-given}{\begingroup\usebibmacro{name:bold}{#1}{#2}}{}{}
+\xpretobibmacro{name:delim}{\begingroup\normalfont}{}{}
+
+\xapptobibmacro{name:family}{\endgroup}{}{}
+\xapptobibmacro{name:given-family}{\endgroup}{}{}
+\xapptobibmacro{name:family-given}{\endgroup}{}{}
+\xapptobibmacro{name:delim}{\endgroup}{}{}
+
+\renewcommand*{\boldnames}{}
+\forcsvlist{\listadd\boldnames}
+{{7d4d2f0f4b7792fe78d6db828f193194}}
+
+% Only print a year once
+\newcounter{currentYear}
+\DeclareFieldFormat{year}{%
+	\ifthenelse{\equal{#1}{\arabic{currentYear}}}%
+	{}
+	{\setcounter{currentYear}{#1}{\color{color1}\bfseries #1}}}
+
+\usepackage{xspace}
+
+\newcommand{\since}{{\small since}\xspace}
+
+\newenvironment{absolutelynopagebreak}
+{\par\nobreak\vfil\penalty0\vfilneg
+	\vtop\bgroup}
+{\par\xdef\tpd{\the\prevdepth}\egroup
+	\prevdepth=\tpd}
+
+\begin{document}
+\nocite{*}
+	
+\makecvtitle
+
+\input{section/education.tex}
+
+\input{section/experience.tex}
+
+\newpage
+
+\input{section/awards.tex}
+
+\input{section/community.tex}
+
+\input{section/publications.tex}
+
+\newpage
+
+\input{section/presentations.tex}
+
+\newpage
+
+\input{section/teaching.tex}
+
+\end{document}
