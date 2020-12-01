@@ -56,7 +56,7 @@
 \AtBeginDocument{\recomputelengths}
 
 \usepackage{lastpage}
-\rfoot{\addressfont\itshape\textcolor{color2}{Page \thepage\ of \pageref{LastPage}}}
+%\rfoot{\addressfont\itshape\textcolor{color2}{Page \thepage\ of \pageref{LastPage}}}
 \cfoot{\addressfont\itshape\textcolor{color2}{Last updated on \today}}
 
 \moderncvstyle{classic}
@@ -68,7 +68,7 @@
 \newcommand{\strong}[1]{\textcolor{color1}{\textbf{#1}}}
 \newcommand{\highlight}[1]{\textcolor{color1}{#1}}
 
-\title{Curriculum Vit\ae{}}
+\title{R\'{e}sum\'{e}}
 \firstname{\color{color1} Kyle}
 \familyname{Simpson}
 \address{Sir Alwyn Williams Building}{Glasgow G12 8QN}{Scotland, United Kingdom}
@@ -138,24 +138,16 @@
 	
 \makecvtitle
 
-\input{section/education.tex}
+\vspace{-2.5em}
 
-\input{section/experience.tex}
+Kyle Simpson is a PhD student in the Networked Systems Research Laboratory at the School of Computing Science, University of Glasgow.
+His research focusses on the use of reinforcement learning and other data-driven techniques in cybersecurity and network management, with a core interest in how they can be empowered by programmable dataplane technology.
+He has previously acted as an affiliate and research intern at the Lawrence Berkeley National Laboratory.
 
-\newpage
-
-\input{section/open-source.tex}
+\input{section/education-short.tex}
 
 \input{section/awards.tex}
 
-\input{section/community.tex}
-
-\newpage
-
 \input{section/publications.tex}
-
-\input{section/presentations.tex}
-
-\input{section/teaching.tex}
 
 \end{document}
