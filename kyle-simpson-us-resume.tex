@@ -1,8 +1,15 @@
-\documentclass[11pt, a4paper]{moderncv}
+\documentclass[10pt, a4paper]{moderncv}
 \usepackage[T1]{fontenc}
 \usepackage{graphicx}
 \usepackage{url}
 \usepackage{nth}
+\usepackage{multicol}
+
+\usepackage{academicons}
+
+\usepackage[per-mode=symbol]{siunitx}
+\sisetup{detect-all, range-phrase=--, range-units=single, detect-weight=true, table-format=1.3}
+\DeclareSIUnit{\packet}{p}
 
 \usepackage[sfdefault, osf]{AlegreyaSans}
 %\renewcommand*\oldstylenums[1]{{\AlegreyaSansOsF #1}}
@@ -52,11 +59,11 @@
 
 \usepackage[utf8]{inputenc}
 % adjust the page margins
-%\usepackage[scale=0.8]{geometry}
+\usepackage[scale=0.8]{geometry}
 \AtBeginDocument{\recomputelengths}
 
 \usepackage{lastpage}
-\rfoot{\addressfont\itshape\textcolor{color2}{Page \thepage\ of \pageref{LastPage}}}
+%\rfoot{\addressfont\itshape\textcolor{color2}{Page \thepage\ of \pageref{LastPage}}}
 \cfoot{\addressfont\itshape\textcolor{color2}{Last updated on \today}}
 
 \moderncvstyle{classic}
@@ -69,13 +76,14 @@
 \renewcommand{\strong}[1]{\textcolor{color1}{\oldstrong{#1}}}
 \newcommand{\highlight}[1]{\textcolor{color1}{#1}}
 
-\title{Curriculum Vit\ae{}}
+\title{R\'{e}sum\'{e}}
 \firstname{\color{color1} Kyle}
 \familyname{Simpson}
-\address{Sir Alwyn Williams Building}{Glasgow G12 8QN}{Scotland, United Kingdom}
-\email{k.simpson.1@research.gla.ac.uk}
+%\address{Sir Alwyn Williams Building}{Glasgow G12 8QN}{Scotland, United Kingdom}
+\email{kyleandrew.simpson@gmail.com}
 \homepage{mcfelix.me}
 \social[github]{felixmcfelix}
+\social[orcid][https://orcid.org/0000-0001-8068-9909]{0000-0001-8068-9909}
 
 \defbibenvironment{bibliography}
 {\list%
@@ -118,11 +126,11 @@
 {86d02a5e257417720395265916a4bb1d}}
 
 % Only print a year once
-\newcounter{currentYear}
-\DeclareFieldFormat{year}{%
-	\ifthenelse{\equal{#1}{\arabic{currentYear}}}%
-	{}
-	{\setcounter{currentYear}{#1}{\color{color1}\bfseries #1}}}
+%\newcounter{currentYear}
+%\DeclareFieldFormat{year}{%
+%	\ifthenelse{\equal{#1}{\arabic{currentYear}}}%
+%	{}
+%	{\setcounter{currentYear}{#1}{\color{color1}\bfseries #1}}}
 
 \usepackage{xspace}
 
@@ -134,27 +142,55 @@
 {\par\xdef\tpd{\the\prevdepth}\egroup
 	\prevdepth=\tpd}
 
+% Two columns: see https://tex.stackexchange.com/questions/348639/two-columns-with-moderncv
+
 \begin{document}
+	\hypersetup{
+		pdfauthor     = {Kyle~Simpson},
+		pdftitle      =
+		{Kyle~Simpson -- R\'{e}sum\'{e}},  %\notblank does not expand argument automatically 
+		pdfsubject    = {R\'{e}sum\'{e} of Kyle~Simpson},
+		pdfkeywords   = {Kyle~Simpson, curriculum vit\ae{}, r\'{e}sum\'{e}}}
 \nocite{*}
+
+\setlength{\hintscolumnwidth}{1.5cm}
+\setlength{\separatorcolumnwidth}{1em}
 	
 \makecvtitle
+\vspace{-2.5em}
 
-\input{section/education.tex}
+\begin{multicols*}{2}
+\setlength{\maincolumnwidth}{\linewidth-\leftskip-\rightskip-\separatorcolumnwidth-\hintscolumnwidth}
 
-\input{section/experience.tex}
+Kyle Simpson is a Research Associate in the Networked Systems Research Laboratory at the \emph{School of Computing Science, University of Glasgow}, and has previously acted as an Affiliate and Research Intern at the \emph{Lawrence Berkeley National Laboratory}.
+\textbf{Kyle is passionate about designing usable, well-tested, and performant systems, is an excellent technical writer, and is always keen to learn about and toy with `weird' architectures and new tools.}
+% (discoverable?), weird architectures
+Their research has included designing low-latency, safe, and secure network function stacks built on Rust for field devices, as well as the use of programmable dataplane technology to make tomorrow's networks smarter and more adaptive.
+%?? and ?
+
+
+%They have previously acted as an affiliate and research intern at the Lawrence Berkeley National Laboratory.
+
+%?? care about systems, networks, performance
+%
+%?? designing usable, understandable, performant systems (discoverable?), weird architectures
+%
+%?? excellent technical writer, keen to ??
+
+\input{section/employment-short.tex}
+
+\input{section/education-short.tex}
+
+\newcolumn
+
+\input{section/skills-normalitem.tex}
 
 \input{section/open-source.tex}
 
-\input{section/awards.tex}
+%\input{section/awards.tex}
 
-\newpage
+\input{section/publications-select.tex}
 
-\input{section/community.tex}
-
-\input{section/publications.tex}
-
-\input{section/presentations.tex}
-
-\input{section/teaching.tex}
+\end{multicols*}
 
 \end{document}

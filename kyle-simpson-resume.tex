@@ -65,7 +65,8 @@
 \definecolor{color1}{RGB}{214,95,16}
 %\definecolor{color2}{RGB}{214,126,16}
 
-\newcommand{\strong}[1]{\textcolor{color1}{\textbf{#1}}}
+\let\oldstrong\strong
+\renewcommand{\strong}[1]{\textcolor{color1}{\oldstrong{#1}}}
 \newcommand{\highlight}[1]{\textcolor{color1}{#1}}
 
 \title{R\'{e}sum\'{e}}
