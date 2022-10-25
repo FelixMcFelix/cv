@@ -66,7 +66,8 @@
 %\definecolor{color2}{RGB}{214,126,16}
 
 \let\oldstrong\strong
-\renewcommand{\strong}[1]{\textcolor{color1}{\oldstrong{#1}}}
+%\renewcommand{\strong}[1]{\textcolor{color1}{\oldstrong{#1}}}
+\newcommand{\strong}[1]{\textcolor{color1}{\textbf{#1}}}
 \newcommand{\highlight}[1]{\textcolor{color1}{#1}}
 
 \title{Curriculum Vit\ae{}}
@@ -135,6 +136,12 @@
 	\prevdepth=\tpd}
 
 \begin{document}
+\hypersetup{
+	pdfauthor     = {Kyle~Simpson},
+	pdftitle      =
+	{Kyle~Simpson -- Curriculum Vit\ae{}},  %\notblank does not expand argument automatically 
+	pdfsubject    = {Curriculum Vit\ae{} of Kyle~Simpson},
+	pdfkeywords   = {Kyle~Simpson, curriculum vit\ae{}, r\'{e}sum\'{e}}}
 \nocite{*}
 	
 \makecvtitle
@@ -142,6 +149,8 @@
 \input{section/education.tex}
 
 \input{section/experience.tex}
+
+\input{section/skills.tex}
 
 \input{section/open-source.tex}
 
