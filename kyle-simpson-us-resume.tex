@@ -72,8 +72,9 @@
 \definecolor{color1}{RGB}{214,95,16}
 %\definecolor{color2}{RGB}{214,126,16}
 
-\let\oldstrong\strong
-\renewcommand{\strong}[1]{\textcolor{color1}{\oldstrong{#1}}}
+%\let\oldstrong\strong
+%\renewcommand{\strong}[1]{\textcolor{color1}{\oldstrong{#1}}}
+\newcommand{\strong}[1]{\textcolor{color1}{\textbf{#1}}}
 \newcommand{\highlight}[1]{\textcolor{color1}{#1}}
 
 \title{R\'{e}sum\'{e}}
@@ -162,10 +163,10 @@
 \begin{multicols*}{2}
 \setlength{\maincolumnwidth}{\linewidth-\leftskip-\rightskip-\separatorcolumnwidth-\hintscolumnwidth}
 
-Kyle Simpson is a Research Associate in the Networked Systems Research Laboratory at the \emph{School of Computing Science, University of Glasgow}, and has previously acted as an Affiliate and Research Intern at the \emph{Lawrence Berkeley National Laboratory}.
-\textbf{Kyle is passionate about designing usable, well-tested, and performant systems, is an excellent technical writer, and is always keen to learn about and toy with `weird' architectures and new tools.}
+Kyle Simpson is an Extensibility Engineer with \emph{Arista Networks}, and has previously served as a Researcher at the \emph{School of Computing Science, University of Glasgow} and \emph{Lawrence Berkeley National Laboratory}.
+\textbf{Kyle is passionate about designing usable, well-tested, and performant networked systems, is an excellent technical writer, and is always keen to learn about and toy with `weird' architectures and new tools.}
 % (discoverable?), weird architectures
-Their research has included designing low-latency, safe, and secure network function stacks built on Rust for field devices, as well as the use of programmable dataplane technology to make tomorrow's networks smarter and more adaptive.
+Their research has included designing low-latency, safe, and secure network function stacks built on Rust for field devices, as well as the use of (P4-)programmable dataplane technology to make tomorrow's networks smarter and more adaptive.
 %?? and ?
 
 
@@ -181,8 +182,9 @@ Their research has included designing low-latency, safe, and secure network func
 
 \input{section/education-short.tex}
 
-\newcolumn
+%\newcolumn
 
+\newcolumn
 \input{section/skills-normalitem.tex}
 
 \input{section/open-source.tex}
